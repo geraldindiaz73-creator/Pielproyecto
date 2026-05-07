@@ -13,7 +13,7 @@
 objects_t objects;
 
 static const char *screen_names[] = { "Main", "Page_principal", "Datos_page", "Configuracion_page", "Medir_page" };
-static const char *object_names[] = { "main", "page_principal", "datos_page", "configuracion_page", "medir_page", "obj0", "obj1", "obj2", "obj3", "obj4", "obj5", "obj6", "arc_humedad", "label_valor", "obj7" };
+static const char *object_names[] = { "main", "page_principal", "datos_page", "configuracion_page", "medir_page", "obj0", "obj1", "obj2", "obj3", "obj4", "obj5", "textarea1", "textarea2", "keybo1", "obj6", "obj7", "obj8", "button_medir", "arc_humedad", "label_valor", "obj9" };
 
 //
 // Event handlers
@@ -87,7 +87,18 @@ static void event_handler_cb_datos_page_obj5(lv_event_t *e) {
     }
 }
 
-static void event_handler_cb_configuracion_page_obj6(lv_event_t *e) {
+static void event_handler_cb_datos_page_obj6(lv_event_t *e) {
+    lv_event_code_t event = lv_event_get_code(e);
+    void *flowState = lv_event_get_user_data(e);
+    (void)flowState;
+    
+    if (event == LV_EVENT_CLICKED) {
+        e->user_data = (void *)0;
+        flowPropagateValueLVGLEvent(flowState, 15, 0, e);
+    }
+}
+
+static void event_handler_cb_configuracion_page_obj8(lv_event_t *e) {
     lv_event_code_t event = lv_event_get_code(e);
     void *flowState = lv_event_get_user_data(e);
     (void)flowState;
@@ -98,7 +109,7 @@ static void event_handler_cb_configuracion_page_obj6(lv_event_t *e) {
     }
 }
 
-static void event_handler_cb_medir_page_obj7(lv_event_t *e) {
+static void event_handler_cb_medir_page_obj9(lv_event_t *e) {
     lv_event_code_t event = lv_event_get_code(e);
     void *flowState = lv_event_get_user_data(e);
     (void)flowState;
@@ -343,7 +354,63 @@ void create_screen_datos_page() {
                 }
             }
         }
+        {
+            // textarea1
+            lv_obj_t *obj = lv_textarea_create(parent_obj);
+            objects.textarea1 = obj;
+            lv_obj_set_pos(obj, 145, 96);
+            lv_obj_set_size(obj, 251, 42);
+            lv_textarea_set_max_length(obj, 128);
+            lv_textarea_set_one_line(obj, false);
+            lv_textarea_set_password_mode(obj, false);
+        }
+        {
+            // textarea2
+            lv_obj_t *obj = lv_textarea_create(parent_obj);
+            objects.textarea2 = obj;
+            lv_obj_set_pos(obj, 145, 151);
+            lv_obj_set_size(obj, 251, 44);
+            lv_textarea_set_max_length(obj, 128);
+            lv_textarea_set_one_line(obj, false);
+            lv_textarea_set_password_mode(obj, false);
+        }
+        {
+            // keybo1
+            lv_obj_t *obj = lv_keyboard_create(parent_obj);
+            objects.keybo1 = obj;
+            lv_obj_set_pos(obj, 20, 321);
+            lv_obj_set_size(obj, 250, 120);
+            lv_keyboard_set_mode(obj, LV_KEYBOARD_MODE_TEXT_UPPER);
+            lv_obj_set_style_align(obj, LV_ALIGN_DEFAULT, LV_PART_MAIN | LV_STATE_DEFAULT);
+        }
+        {
+            lv_obj_t *obj = lv_keyboard_create(parent_obj);
+            objects.obj7 = obj;
+            lv_obj_set_pos(obj, 270, 321);
+            lv_obj_set_size(obj, 185, 120);
+            lv_keyboard_set_mode(obj, LV_KEYBOARD_MODE_NUMBER);
+            lv_obj_set_style_align(obj, LV_ALIGN_DEFAULT, LV_PART_MAIN | LV_STATE_DEFAULT);
+        }
+        {
+            lv_obj_t *obj = lv_btn_create(parent_obj);
+            objects.obj6 = obj;
+            lv_obj_set_pos(obj, 331, 274);
+            lv_obj_set_size(obj, 96, 29);
+            lv_obj_add_event_cb(obj, event_handler_cb_datos_page_obj6, LV_EVENT_ALL, flowState);
+            {
+                lv_obj_t *parent_obj = obj;
+                {
+                    lv_obj_t *obj = lv_label_create(parent_obj);
+                    lv_obj_set_pos(obj, 0, 0);
+                    lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+                    lv_obj_set_style_align(obj, LV_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
+                    lv_label_set_text(obj, "Guardar");
+                }
+            }
+        }
     }
+    lv_keyboard_set_textarea(objects.keybo1, objects.textarea1);
+    lv_keyboard_set_textarea(objects.obj7, objects.textarea2);
     
     tick_screen_datos_page();
 }
@@ -436,10 +503,10 @@ void create_screen_configuracion_page() {
         }
         {
             lv_obj_t *obj = lv_btn_create(parent_obj);
-            objects.obj6 = obj;
+            objects.obj8 = obj;
             lv_obj_set_pos(obj, 12, 16);
             lv_obj_set_size(obj, 67, 25);
-            lv_obj_add_event_cb(obj, event_handler_cb_configuracion_page_obj6, LV_EVENT_ALL, flowState);
+            lv_obj_add_event_cb(obj, event_handler_cb_configuracion_page_obj8, LV_EVENT_ALL, flowState);
             {
                 lv_obj_t *parent_obj = obj;
                 {
@@ -472,7 +539,9 @@ void create_screen_medir_page() {
     {
         lv_obj_t *parent_obj = obj;
         {
+            // button_medir
             lv_obj_t *obj = lv_btn_create(parent_obj);
+            objects.button_medir = obj;
             lv_obj_set_pos(obj, 149, 74);
             lv_obj_set_size(obj, 150, 52);
             {
@@ -506,10 +575,10 @@ void create_screen_medir_page() {
         }
         {
             lv_obj_t *obj = lv_btn_create(parent_obj);
-            objects.obj7 = obj;
+            objects.obj9 = obj;
             lv_obj_set_pos(obj, 12, 24);
             lv_obj_set_size(obj, 76, 31);
-            lv_obj_add_event_cb(obj, event_handler_cb_medir_page_obj7, LV_EVENT_ALL, flowState);
+            lv_obj_add_event_cb(obj, event_handler_cb_medir_page_obj9, LV_EVENT_ALL, flowState);
             {
                 lv_obj_t *parent_obj = obj;
                 {
