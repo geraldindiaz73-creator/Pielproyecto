@@ -12,13 +12,13 @@
 #include <Wire.h>
 #include <Adafruit_ADS1X15.h>
 #include <MAX30105.h>
-
+//objetos eez
 extern objects_t objects;
 
 #define I2C_SDA 15
 #define I2C_SCL 7
 #define PIN_RST_TOUCH 16
-
+parametros gsr
 #define GSR_REPOSO   960  // subir un poco para absorber la deriva natural
 #define GSR_MAXIMO   4000
 #define UMBRAL_CONTACTO 300  // vuelve a 300, ya no necesitas 1800

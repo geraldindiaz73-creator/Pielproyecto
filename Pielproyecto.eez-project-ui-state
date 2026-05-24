@@ -71,7 +71,7 @@
           },
           {
             "type": "border",
-            "selected": 1,
+            "selected": 0,
             "location": "bottom",
             "children": [
               {
@@ -123,7 +123,7 @@
                 {
                   "type": "tabset",
                   "id": "#05ee9a78-7894-4bbe-88e5-827179d4ca41",
-                  "weight": 1,
+                  "weight": 1.7142857142857142,
                   "enableClose": false,
                   "children": [
                     {
@@ -155,7 +155,7 @@
                 {
                   "type": "tabset",
                   "id": "#818fcb6b-c48a-43c0-9174-a0bb0eef0bdf",
-                  "weight": 1,
+                  "weight": 0.2857142857142857,
                   "enableClose": false,
                   "children": [
                     {
@@ -190,6 +190,7 @@
               "type": "tabset",
               "id": "EDITORS",
               "weight": 65,
+              "selected": 1,
               "enableDeleteWhenEmpty": false,
               "enableClose": false,
               "children": [
@@ -251,6 +252,14 @@
                       "component": "componentsPalette",
                       "enableClose": false,
                       "icon": "svg:components"
+                    },
+                    {
+                      "type": "tab",
+                      "id": "BREAKPOINTS_PALETTE",
+                      "name": "Breakpoints",
+                      "component": "breakpointsPanel",
+                      "enableClose": false,
+                      "icon": "svg:breakpoints_panel"
                     }
                   ]
                 }
@@ -1077,10 +1086,10 @@
       },
       "transform": {
         "translate": {
-          "x": -145.25,
-          "y": -206.04166793823242
+          "x": -334.3500000000001,
+          "y": -163.31842399597164
         },
-        "scale": 0.8
+        "scale": 0.67
       },
       "timeline": {
         "isEditorActive": false,
@@ -1097,18 +1106,19 @@
           "1": {},
           "2": {},
           "3": {},
-          "4": {
-            "$selected": true
-          },
+          "4": {},
           "5": {}
+        },
+        "5": {
+          "$selected": true
         }
       },
       "transform": {
         "translate": {
           "x": -182.4967718230883,
-          "y": -183.4579656177097
+          "y": -189.4579656177097
         },
-        "scale": 1
+        "scale": 0.67
       },
       "timeline": {
         "isEditorActive": false,
@@ -1121,16 +1131,20 @@
       "selectionFront": {},
       "selectionBack": {
         "0": {
+          "4": {},
           "6": {},
           "11": {}
+        },
+        "2": {
+          "$selected": true
         }
       },
       "transform": {
         "translate": {
-          "x": -138.16669921875,
-          "y": -156.74998277028385
+          "x": -135.16669921875,
+          "y": -61.74998753865542
         },
-        "scale": 1
+        "scale": 0.67
       },
       "timeline": {
         "isEditorActive": false,
@@ -1155,10 +1169,10 @@
       },
       "transform": {
         "translate": {
-          "x": -212.09375,
-          "y": -221.44270879030233
+          "x": -38.16666666666667,
+          "y": -207.2204910914103
         },
-        "scale": 1
+        "scale": 0.67
       },
       "timeline": {
         "isEditorActive": false,
@@ -1178,14 +1192,15 @@
         },
         "1": {
           "$selected": true
-        }
+        },
+        "2": {}
       },
       "transform": {
         "translate": {
-          "x": -155.16667111714685,
-          "y": -263.00001970926917
+          "x": -0.8749999999999716,
+          "y": -90.24869155883798
         },
-        "scale": 0.8
+        "scale": 0.67
       },
       "timeline": {
         "isEditorActive": false,
@@ -1203,15 +1218,16 @@
           "10": {},
           "14": {}
         },
-        "1": {},
-        "2": {}
+        "1": {
+          "$selected": true
+        }
       },
       "transform": {
         "translate": {
-          "x": -223.81094209471738,
-          "y": -215.65670878851597
+          "x": -204,
+          "y": -136.66666698455805
         },
-        "scale": 0.75
+        "scale": 0.67
       },
       "timeline": {
         "isEditorActive": false,
@@ -1240,6 +1256,6 @@
   ],
   "showInactiveFlowsInDebugger": true,
   "globalFlowZoom": true,
-  "flowZoom": 1,
+  "flowZoom": 0.67,
   "implementationLanguage": "C"
 }
